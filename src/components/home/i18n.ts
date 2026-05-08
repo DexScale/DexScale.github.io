@@ -247,6 +247,13 @@ export const i18nDict: Record<string, { en: string; zh: string }> = {
   "scenarios.tactile": { en: "Visual Tactile Fine-Grained Manipulation", zh: "视触觉细粒度操作" },
   "scenarios.industrial": { en: "Industrial Precision Assembly", zh: "工业精密装配" },
   "scenarios.domestic": { en: "Domestic Service Tasks", zh: "家庭服务任务" },
+  "scenarios.play": { en: "Play", zh: "播放" },
+  "scenarios.pause": { en: "Pause", zh: "暂停" },
+  "scenarios.mute": { en: "Mute", zh: "静音" },
+  "scenarios.unmute": { en: "Unmute", zh: "取消静音" },
+  "scenarios.fullscreen": { en: "Full screen", zh: "全屏" },
+  "scenarios.exit_fullscreen": { en: "Exit full screen", zh: "退出全屏" },
+  "scenarios.more_options": { en: "More options", zh: "更多选项" },
 };
 
 export const useLang = () => {
