@@ -143,11 +143,11 @@ export const HeroSection = ({ t }: HeroSectionProps) => {
       </div>
 
       <div className="relative z-10 flex w-full max-w-4xl flex-col items-center text-center text-white">
-        <h1 className="m-0 max-w-4xl text-[clamp(2rem,6.5vw,4rem)] font-bold uppercase leading-[1.08] tracking-[0.06em] text-white">
+        <h1 className="m-0 max-w-4xl text-[clamp(3rem,6.5vw,5rem)] font-bold uppercase leading-[1.08] tracking-[0.06em] text-white">
           {t("hero.brand")}
         </h1>
 
-        <p className="mt-5 max-w-2xl text-base font-medium leading-relaxed text-white md:text-lg">
+        <p className="mt-5 max-w-2xl text-xl font-medium leading-relaxed text-white md:text-2xl">
           {t("hero.title")}
         </p>
 
@@ -155,7 +155,7 @@ export const HeroSection = ({ t }: HeroSectionProps) => {
           type="button"
           onClick={() => void handleWatchFullVideo()}
           onKeyDown={handleWatchKeyDown}
-          className="mt-10 inline-flex items-center gap-3 text-sm font-normal text-white transition-opacity hover:opacity-90"
+          className="mt-10 inline-flex items-center gap-3 text-xl font-normal text-white transition-opacity hover:opacity-90"
           aria-label={t("hero.watch")}
         >
           <span>{t("hero.watch")}</span>
@@ -194,7 +194,7 @@ export const HeroSection = ({ t }: HeroSectionProps) => {
             </h2>
             <div className="hero-credits-partners">
               {partners.map((p) => (
-                <div key={p.name} className="hero-credits-partner-logo" title={p.name}>
+                <div key={p.name} className="hero-credits-partner-logo " title={p.name}>
                   <img src={p.logo} alt={p.name} loading="lazy" />
                 </div>
               ))}
@@ -207,14 +207,6 @@ export const HeroSection = ({ t }: HeroSectionProps) => {
             <h2 className="hero-credits-label">
               <span className="hero-credits-label-text">{t("hero.authors.title")}</span>
             </h2>
-            {/* <div className="hero-credits-authors-grid" role="list">
-              {groupedAuthors.map((group) => (
-                <div key={group.affil} className="hero-credits-author-group" role="listitem">
-                  <span className="hero-credits-author-group-label">{t(group.labelKey)}</span>
-                  <p className="hero-credits-author-group-names">{group.names.join(" · ")}</p>
-                </div>
-              ))}
-            </div> */}
             <div className="flex flex-col items-center justify-center">
               <div className="flex flex-wrap justify-center gap-x-4 gap-y-1">
                 <span className="author-equal">

@@ -129,7 +129,7 @@
 
 .hero-credits-label-text {
   display: block;
-  font-size: 11px;
+  font-size: 18px;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -149,7 +149,7 @@
 }
 
 .hero-credits-partner-logo {
-  height: 40px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -164,13 +164,13 @@
 .hero-credits-partner-logo img {
   height: 100%;
   width: auto;
-  max-width: 140px;
+  max-width: 160px;
   object-fit: contain;
 }
 
 @media (min-width: 640px) {
   .hero-credits-partner-logo {
-    height: 48px;
+    height: 70px;
   }
 
   .hero-credits-partner-logo img {

@@ -31,7 +31,7 @@ export const i18nDict: Record<string, { en: string; zh: string }> = {
   "hero.download": { en: "Download Dataset", zh: "下载数据集" },
   "hero.github": { en: "Github", zh: "Github" },
   "hero.paper": { en: "Paper", zh: "论文" },
-  "hero.partners.title": { en: "Partners", zh: "合作单位" },
+  "hero.partners.title": { en: "Affiliations", zh: "合作单位" },
   "hero.partners.lxxqs": { en: "Linkerbot", zh: "灵心巧手" },
   "hero.partners.sjtu": { en: "Shanghai Jiao Tong University", zh: "上海交通大学" },
   "hero.partners.hku": { en: "The University of Hong Kong", zh: "香港大学" },
