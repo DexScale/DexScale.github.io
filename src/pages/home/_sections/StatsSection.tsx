@@ -1,13 +1,14 @@
 import type { CSSProperties } from "react";
 import { useCounter } from "@/hooks/use-counter";
 import { Reveal } from "./Reveal";
+import videoSrc from "../assets/linkerbot.mp4";
+import videoSrc2 from "../assets/video1.webm";
 
 interface StatsSectionProps {
   t: (key: string) => string;
 }
 
 const stats = [
-  { target: 1000000, suffix: "+", label: "TRAJECTORIES" },
   { target: 217, suffix: "", label: "TASKS" },
   { target: 106, suffix: "", label: "SCENARIOS" },
   { target: 87, suffix: "", label: "SKILLS" },
@@ -82,10 +83,15 @@ export const StatsSection = ({ t }: StatsSectionProps) => {
           <p className="m-0 text-base text-[var(--hm-muted)]">{t("stats.sub")}</p>
         </Reveal>
 
-        <Reveal className="mb-14 grid grid-cols-4 gap-5 max-[900px]:grid-cols-2">
-          {stats.map((stat) => (
-            <StatCard key={stat.label} {...stat} />
-          ))}
+        <Reveal className="mb-14 rounded-2xl overflow-hidden">
+          <video
+            src={videoSrc}
+            className="w-full h-full object-cover"
+            controls
+            autoPlay
+            muted
+            loop
+          />
         </Reveal>
 
         <div className="grid grid-cols-2 gap-6 max-[900px]:grid-cols-1">
@@ -94,10 +100,15 @@ export const StatsSection = ({ t }: StatsSectionProps) => {
               key={distribution.title}
               className="rounded-[18px] border border-[var(--hm-line)] bg-white/[0.03] p-6"
             >
-              <h4 className="mb-4 text-base font-semibold text-[var(--hm-text)]">{distribution.title}</h4>
+              <h4 className="mb-4 text-base font-semibold text-[var(--hm-text)]">
+                {distribution.title}
+              </h4>
               <div className="space-y-3">
                 {distribution.rows.map((row) => (
-                  <div key={row.name} className="flex items-center gap-3 text-[13px] text-[var(--hm-muted)]">
+                  <div
+                    key={row.name}
+                    className="flex items-center gap-3 text-[13px] text-[var(--hm-muted)]"
+                  >
                     <div className="w-[130px] shrink-0">{row.name}</div>
                     <div className="h-2 flex-1 overflow-hidden rounded-full bg-white/[0.06]">
                       <div
@@ -112,6 +123,28 @@ export const StatsSection = ({ t }: StatsSectionProps) => {
             </Reveal>
           ))}
         </div>
+
+        <Reveal className="mt-14">
+          <div className="grid grid-cols-8 gap-6">
+            {/* 左侧视频  80%*/}
+            <div className="col-span-8 md:col-span-6 rounded-2xl overflow-hidden">
+              <video
+                src={videoSrc2}
+                className="w-full h-full object-cover"
+                controls
+                autoPlay
+                muted
+                loop
+              />
+            </div>
+            {/* 右侧三个 card：顶底贴边，中间 flex-1 自适应（与左侧视频行等高时生效） */}
+            <div className="col-span-8 md:col-span-2 flex h-full min-h-0 flex-col md:justify-between">
+              {stats.map((stat) => (
+                <StatCard key={stat.label} {...stat} />
+              ))}
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

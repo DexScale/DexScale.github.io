@@ -17,7 +17,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import video1 from "../assets/video1.webm";
 import video2 from "../assets/video2.mp4";
 import video3 from "../assets/video3.mp4";
 import video4 from "../assets/video4.mp4";
@@ -25,11 +24,6 @@ import video5 from "../assets/video5.mp4";
 import video6 from "../assets/video6.mp4";
 
 const scenarioItems = [
-  {
-    id: "bimanual",
-    titleKey: "scenarios.bimanual",
-    video: video1,
-  },
   {
     id: "moving",
     titleKey: "scenarios.moving",
@@ -51,7 +45,7 @@ const scenarioItems = [
     video: video5,
   },
   {
-    id: "domestic",
+    id: "multimodal",
     titleKey: "scenarios.domestic",
     video: video6,
   },
@@ -263,11 +257,11 @@ export const VideoCarouselSection = ({ t }: VideoCarouselSectionProps) => {
 
                           <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/85 via-black/15 to-transparent" />
 
-                          <div className="pointer-events-none absolute top-0 right-0 left-0 p-5 md:p-6">
+                          {/* <div className="pointer-events-none absolute top-0 right-0 left-0 p-5 md:p-6">
                             <h3 className="text-center text-lg font-semibold text-white md:text-2xl">
                               {t(item.titleKey)}
                             </h3>
-                          </div>
+                          </div> */}
 
                           {isSelected && (
                             <div className="absolute inset-x-0 bottom-0 opacity-0 pointer-events-none transition-opacity duration-200 group-hover/slide:pointer-events-auto group-hover/slide:opacity-100 focus-within:pointer-events-auto focus-within:opacity-100">
@@ -407,9 +401,9 @@ export const VideoCarouselSection = ({ t }: VideoCarouselSectionProps) => {
             <div className="mb-2 text-xs tracking-widest text-cyan-400 uppercase">
               {`${t("scenarios.task_word")} ${selectedIndex + 1} / ${scenarioItems.length}`}
             </div>
-            <h3 className="text-2xl font-bold text-white md:text-3xl">
+            {/* <h3 className="text-2xl font-bold text-white md:text-3xl">
               {t(currentItem?.titleKey ?? "")}
-            </h3>
+            </h3> */}
           </div>
         </div>
 

@@ -38,11 +38,11 @@ export const IntroSection = ({ t }: IntroSectionProps) => {
             <p>{t("intro.p2")}</p>
             <p>{t("intro.p3")}</p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-12">
+          {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-12">
             {introStats.map((stat) => (
               <IntroCounter key={stat.label} {...stat} />
             ))}
-          </div>
+          </div> */}
         </div>
       </Reveal>
     </section>
