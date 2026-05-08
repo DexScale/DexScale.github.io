@@ -24,7 +24,7 @@ export const i18nDict: Record<string, { en: string; zh: string }> = {
     zh: "Linker Hand — 灵巧手与场景",
   },
   "hero.title": {
-    en: "A Diverse and Large-Scale Vision-Tactile Dataset for General Dexterous Manipulation",
+    en: "A Diverse and Large-Scale Dataset for General Vision-Tactile Dexterous Manipulation",
     zh: "首个面向通用机器人策略的大规模学习数据集",
   },
   "hero.watch": { en: "Watch the full video", zh: "观看完整视频" },
@@ -35,7 +35,7 @@ export const i18nDict: Record<string, { en: string; zh: string }> = {
   "hero.partners.lxxqs": { en: "Linkerbot", zh: "灵心巧手" },
   "hero.partners.sjtu": { en: "Shanghai Jiao Tong University", zh: "上海交通大学" },
   "hero.partners.hku": { en: "The University of Hong Kong", zh: "香港大学" },
-  "hero.authors.title": { en: "Author affiliations", zh: "作者单位" },
+  "hero.authors.title": { en: "Author ", zh: "作者" },
   "hero.authors.affil.sjtu": { en: "SJTU", zh: "上海交大" },
   "hero.authors.affil.hku": { en: "HKU", zh: "香港大学" },
   "hero.authors.affil.linker": { en: "Linkerbot", zh: "灵心巧手" },
@@ -44,22 +44,22 @@ export const i18nDict: Record<string, { en: string; zh: string }> = {
     zh: "穆尧(sjtu) 秦言（hku） 陈天行(hku) 邵彦铭 （sjtu） 苏洋（灵心） 孙煜童（灵心）周浩宇（灵心）",
   },
   "intro.p1": {
-    en: "Most existing robot learning benchmarks struggle to address real-world challenges caused by low-quality data and limited sensing capabilities, typically limited to short-horizon tasks within controlled environments.",
-    zh: "现有机器人学习基准多受限于数据质量与感知能力，仅能处理受控环境下的短程任务，难以应对真实世界的复杂挑战。",
+    en: "Dexterous manipulation is essential for building general-purpose embodied agents, yet learning such skills remains challenging due to high-dimensional hand control, complex contact dynamics, and the lack of large-scale, high-quality datasets. Existing robot manipulation datasets are often limited to simple grippers, visual observations, single embodiments, or short-horizon tasks, making them insufficient for studying general dexterous manipulation.",
+    zh: "灵巧操纵是构建通用具身智能体的核心基础。但由于手部控制维度高、接触动力学复杂，且缺乏大规模、高质量数据集，学习这类灵巧操作技能一直极具挑战。现有的机器人操纵数据集大多局限于简易夹爪、单一视觉观测、单一种类智能体形态，或是短时程任务，难以支撑通用灵巧操纵领域的研究。",
   },
   "intro.p2": {
-    en: 'Introducing Linker Hand — the first large-scale robotic learning dataset designed to advance multi-purpose robotic policies, accompanied by foundation models, benchmarks and an ecosystem, paving the path towards the "ImageNet Moment" for Embodied AI.',
-    zh: '我们推出 Linker Hand —— 首个面向通用机器人策略的大规模学习数据集，配套基础模型、基准与生态，迈向具身智能的"ImageNet 时刻"。',
+    en: "In this work, we introduce DexScale, a diverse and large-scale vision-tactile dataset designed for general dexterous robotic manipulation. DexScale supports dexterous hands with different degrees of freedom and provides synchronized multimodal observations, including robot actions, RGB-D visual perception, and in-hand tactile sensing. Built upon a high-fidelity isomorphic data collection system, DexScale captures fine-grained, smooth, and contact-rich manipulation trajectories that are difficult to obtain with conventional teleoperation pipelines.",
+    zh: "我们提出 DexScale—— 一款面向通用机器人灵巧操纵的大规模、多场景视觉 - 触觉数据集。DexScale 支持不同自由度的灵巧手，提供机器人动作、RGB-D 视觉感知、手部触觉传感等多模态同步观测数据。依托高保真同构数据采集系统，DexScale 能够采集到精细化、平滑且富含接触交互的操纵轨迹，这类轨迹难以通过传统遥操作方案获取",
   },
   "intro.p3": {
-    en: "1M+ trajectories from 100 robots across 100+ real-world scenarios in five target domains. Cutting-edge multimodal hardware including visual tactile sensors, dexterous hands, and mobile dual-arm robots.",
+    en: "The dataset covers a broad range of tasks and scenarios, including tool use, dexterous object manipulation, diverse grasping, bimanual coordination, long-horizon execution, and interactions in varied environments. By scaling dexterous manipulation data across embodiments, modalities, tasks, and scenes, DexScale provides a foundation for training and evaluating policies that integrate spatial perception, tactile feedback, and precise hand control. Together, DexScale aims to bridge the gap between large-scale robot learning and fine-grained dexterous control, offering a data foundation for developing general-purpose vision-tactile manipulation policies.",
     zh: "100 台机器人采集的 100 万+ 轨迹，覆盖五大领域 100+ 真实场景。配备视触觉传感器、灵巧手与移动双臂机器人等前沿多模态硬件。",
   },
   "highlights.title": { en: "Linker Hand Highlights", zh: "项目亮点" },
   "h1.title": { en: "Cutting-Edge Sensor and Hardware Design", zh: "前沿传感与硬件设计" },
   "h1.desc": {
     en: "Visual tactile sensors, 6-DoF dexterous hands and whole-body controlled mobile dual-arm robots.",
-    zh: "视触觉传感器、6 自由度灵巧手与全身控制的移动双臂机器人。",
+    zh: "该数据集覆盖丰富的任务与场景，包括工具使用、物体灵巧操纵、多样化抓取、双臂协同、长时序任务执行以及多环境交互等。通过在智能体形态、感知模态、任务类型、应用场景四个维度扩充灵巧操纵数据规模，DexScale 为融合空间感知、触觉反馈与高精度手部控制的策略模型，提供了训练与评测基础。整体而言，DexScale 旨在弥合大规模机器人学习与精细化灵巧控制之间的鸿沟，为研发通用视觉 - 触觉操纵策略筑牢数据根基。",
   },
   "h2.title": { en: "Wide-Spectrum Scenario Coverage", zh: "广谱场景覆盖" },
   "h2.desc": {
@@ -233,6 +233,20 @@ export const i18nDict: Record<string, { en: string; zh: string }> = {
     en: "Compatible with the full Linker Hand lineup",
     zh: "适配性：兼容本公司全系列灵巧手产品",
   },
+  "nav.scenarios": { en: "Scenarios", zh: "场景展示" },
+  "scenarios.title": { en: "Versatile Scenarios", zh: "多样化场景" },
+  "scenarios.subtitle": {
+    en: "Challenging tasks spanning over 100 replicated real-life scenarios across five major industries",
+    zh: "跨越五大行业、100多个真实复刻场景的挑战性任务",
+  },
+  "scenarios.prev": { en: "Previous", zh: "上一个" },
+  "scenarios.next": { en: "Next", zh: "下一个" },
+  "scenarios.task_word": { en: "Scenario", zh: "场景" },
+  "scenarios.bimanual": { en: "Bimanual Tool Utilization", zh: "双手工具使用" },
+  "scenarios.moving": { en: "Moving Objects Grasping", zh: "移动物体抓取" },
+  "scenarios.tactile": { en: "Visual Tactile Fine-Grained Manipulation", zh: "视触觉细粒度操作" },
+  "scenarios.industrial": { en: "Industrial Precision Assembly", zh: "工业精密装配" },
+  "scenarios.domestic": { en: "Domestic Service Tasks", zh: "家庭服务任务" },
 };
 
 export const useLang = () => {

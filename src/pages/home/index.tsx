@@ -10,6 +10,7 @@ import { DexterousHandSection } from "./_sections/DexterousHandSection";
 import { WholeMachineSection } from "./_sections/WholeMachineSection";
 
 import "./home.css";
+import { VideoCarouselSection } from "./_sections/VideoCarouselSection";
 
 export const HomePage = () => {
   const { lang, t, toggleLang } = useLang();
@@ -21,6 +22,7 @@ export const HomePage = () => {
         <HeroSection t={t} />
         <IntroSection t={t} />
         <StatsSection t={t} />
+        <VideoCarouselSection t={t} />
         <MultiTasksSection t={t} />
         {/* <WholeMachineSection t={t} /> */}
         <DexterousHandSection t={t} />

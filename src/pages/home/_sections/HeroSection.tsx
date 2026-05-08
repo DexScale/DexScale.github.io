@@ -3,7 +3,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 // import heroPoster from "../assets/heroBg.jpg";
 import heroVideo from "../assets/linkerbot.mp4";
 import logoSJTU from "../assets/SJTU.png";
-import logoHKU from "../assets/UHK.wine.svg";
+import logoHKU from "../assets/HKU.png";
 import logoLinkerbot from "../assets/linerbotLogo.png";
 
 const partners = [
@@ -207,13 +207,60 @@ export const HeroSection = ({ t }: HeroSectionProps) => {
             <h2 className="hero-credits-label">
               <span className="hero-credits-label-text">{t("hero.authors.title")}</span>
             </h2>
-            <div className="hero-credits-authors-grid" role="list">
+            {/* <div className="hero-credits-authors-grid" role="list">
               {groupedAuthors.map((group) => (
                 <div key={group.affil} className="hero-credits-author-group" role="listitem">
                   <span className="hero-credits-author-group-label">{t(group.labelKey)}</span>
                   <p className="hero-credits-author-group-names">{group.names.join(" · ")}</p>
                 </div>
               ))}
+            </div> */}
+            <div className="flex flex-col items-center justify-center">
+              <div className="flex flex-wrap justify-center gap-x-4 gap-y-1">
+                <span className="author-equal">
+                  Yao Mu<sup>2</sup>,
+                </span>
+                <span className="author-equal">
+                  Yan Qin<sup>3</sup>,
+                </span>
+                <span className="author-equal">
+                  Tianxing Chen<sup>3</sup>,
+                </span>
+                <span className="author-name">
+                  Yanming Shao<sup>2</sup>,
+                </span>
+                <span className="author-equal">
+                  Yong Zhou<sup>1</sup>,
+                </span>
+                <span className="author-equal">
+                  Gang Cao<sup>1</sup>,
+                </span>
+                <span className="author-equal">
+                  Yang Su<sup>1</sup>,
+                </span>
+                <span className="author-equal">
+                  Yutong Sun<sup>1</sup>,
+                </span>
+                <span className="author-equal">
+                  Haoyu Zhou<sup>1</sup>,
+                </span>
+                <span className="author-equal">
+                  Meihan Zhao<sup>1</sup>,
+                </span>
+              </div>
+              <hr className="my-6 border-gray-300 w-full"></hr>
+
+              <div className="flex flex-wrap justify-center gap-x-2 gap-y-1 affiliation">
+                <span>
+                  <sup>1</sup>Linkerbot Beijing Technology co., Ltd. ,
+                </span>
+                <span>
+                  <sup>2</sup>Shanghai Jiao Tong University,
+                </span>
+                <span>
+                  <sup>3</sup>The University of Hong Kong
+                </span>
+              </div>
             </div>
           </div>
         </aside>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Link } from "@tanstack/react-router";
 import type { Lang } from "@/components/home/i18n";
 import logoSrc from "../assets/single.png";
 
@@ -10,11 +10,11 @@ interface NavSectionProps {
 
 const navLinks = [
   { href: "#stats", labelKey: "nav.stats" },
+  { href: "#scenarios", labelKey: "nav.scenarios" },
   { href: "#multi-tasks", labelKey: "nav.multi_tasks" },
   // { href: "#whole-machine", labelKey: "nav.whole_machine" },
   { href: "#dexterous-hand", labelKey: "nav.dexterous_hand" },
   { href: "#teleoperation", labelKey: "nav.teleoperation" },
-  // { href: "#footer", labelKey: "nav.footer" },
 ];
 
 const handleAnchorClick = (href: string) => {
