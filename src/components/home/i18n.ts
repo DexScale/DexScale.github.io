@@ -233,8 +233,8 @@ export const i18nDict: Record<string, { en: string; zh: string }> = {
     en: "Compatible with the full Linker Hand lineup",
     zh: "适配性：兼容本公司全系列灵巧手产品",
   },
-  "nav.scenarios": { en: "Scenarios", zh: "场景展示" },
-  "scenarios.title": { en: "Versatile Scenarios", zh: "多样化场景" },
+  "nav.scenarios": { en: "Multimodal Scenarios", zh: "多模态场景" },
+  "scenarios.title": { en: "Multimodal Scenarios", zh: "多模态场景" },
   "scenarios.subtitle": {
     en: "Challenging tasks spanning over 100 replicated real-life scenarios across five major industries",
     zh: "跨越五大行业、100多个真实复刻场景的挑战性任务",

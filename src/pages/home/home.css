@@ -256,6 +256,57 @@
   }
 }
 
+/* Video carousel — seek bar: filled portion (div) + transparent range track + thumb */
+.home-page .video-scrub {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+}
+
+.home-page .video-scrub:focus {
+  outline: none;
+}
+
+.home-page .video-scrub:focus-visible {
+  outline: 2px solid rgba(34, 211, 238, 0.55);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.home-page .video-scrub::-webkit-slider-runnable-track {
+  height: 4px;
+  background: transparent;
+  border-radius: 9999px;
+}
+
+.home-page .video-scrub::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  margin-top: -5px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.home-page .video-scrub::-moz-range-track {
+  height: 4px;
+  background: transparent;
+  border-radius: 9999px;
+}
+
+.home-page .video-scrub::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border: none;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
 /* Animations */
 @keyframes hero-credits-in {
   from {

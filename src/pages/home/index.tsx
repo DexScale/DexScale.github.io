@@ -23,7 +23,7 @@ export const HomePage = () => {
         <IntroSection t={t} />
         <StatsSection t={t} />
         <VideoCarouselSection t={t} />
-        <MultiTasksSection t={t} />
+        {/* <MultiTasksSection t={t} /> */}
         {/* <WholeMachineSection t={t} /> */}
         <DexterousHandSection t={t} />
         <TeleoperationSection t={t} />

@@ -17,7 +17,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import video1 from "../assets/video1.mp4";
+import video1 from "../assets/video1.webm";
 import video2 from "../assets/video2.mp4";
 import video3 from "../assets/video3.mp4";
 import video4 from "../assets/video4.mp4";
@@ -209,13 +209,14 @@ export const VideoCarouselSection = ({ t }: VideoCarouselSectionProps) => {
 
   const currentItem = scenarioItems[selectedIndex];
   const dur = duration > 0 ? duration : 0;
+  const seekProgressPct = dur > 0 ? Math.min(100, Math.max(0, (currentTime / dur) * 100)) : 0;
 
   return (
     <section
       id="scenarios"
       className="scroll-mt-20 bg-linear-to-b from-(--hm-bg) to-(--hm-bg-2) px-6 py-24 max-[900px]:px-5 max-[900px]:py-16"
     >
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-screen-2xl">
         <div className="mb-16 text-center">
           <h2 className="mb-4 text-4xl leading-tight font-bold text-(--hm-text) md:text-5xl">
             {t("scenarios.title")}
@@ -225,15 +226,15 @@ export const VideoCarouselSection = ({ t }: VideoCarouselSectionProps) => {
           </p>
         </div>
 
-        <div className="relative px-2 md:px-10" style={{ perspective: "1400px" }}>
-          <div className="overflow-hidden py-6" ref={emblaRef}>
+        <div className="relative px-0 md:px-4" style={{ perspective: "1400px" }}>
+          <div className="overflow-hidden py-4 md:py-8" ref={emblaRef}>
             <div className="flex items-center [-webkit-tap-highlight-color:transparent]">
               {scenarioItems.map((item, index) => {
                 const isSelected = index === selectedIndex;
                 return (
                   <div
                     key={item.id}
-                    className="min-w-0 flex-[0_0_82%] pl-3 transition-[flex-basis] duration-300 first:pl-0 min-[640px]:flex-[0_0_58%] min-[900px]:flex-[0_0_48%] min-[1200px]:flex-[0_0_40%] min-[1200px]:pl-5"
+                    className="min-w-0 flex-[0_0_92%] pl-2 transition-[flex-basis] duration-300 first:pl-0 min-[640px]:flex-[0_0_76%] min-[640px]:pl-4 min-[900px]:flex-[0_0_68%] min-[1200px]:flex-[0_0_58%] min-[1200px]:pl-5"
                   >
                     <div
                       className={`relative origin-center transition-all duration-500 ease-out transform-3d ${
@@ -271,16 +272,33 @@ export const VideoCarouselSection = ({ t }: VideoCarouselSectionProps) => {
                           {isSelected && (
                             <div className="absolute inset-x-0 bottom-0 opacity-0 pointer-events-none transition-opacity duration-200 group-hover/slide:pointer-events-auto group-hover/slide:opacity-100 focus-within:pointer-events-auto focus-within:opacity-100">
                               <div className="px-3 pt-2 pb-1">
-                                <input
-                                  type="range"
-                                  min={0}
-                                  max={dur || 0}
-                                  step={0.05}
-                                  value={Math.min(currentTime, dur || 0)}
-                                  onChange={(e) => handleSeek(parseFloat(e.target.value))}
-                                  className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-white/20 accent-white"
-                                  aria-label="Seek"
-                                />
+                                <div className="relative flex h-4 w-full items-center">
+                                  <div
+                                    className="pointer-events-none absolute right-0 left-0 top-1/2 h-1 -translate-y-1/2 rounded-full bg-white/22"
+                                    aria-hidden
+                                  />
+                                  <div
+                                    className="pointer-events-none absolute top-1/2 left-0 h-1 -translate-y-1/2 rounded-full bg-white"
+                                    style={{
+                                      width: `${seekProgressPct}%`,
+                                      maxWidth: "100%",
+                                    }}
+                                    aria-hidden
+                                  />
+                                  <input
+                                    type="range"
+                                    min={0}
+                                    max={dur || 0}
+                                    step={0.05}
+                                    value={Math.min(currentTime, dur || 0)}
+                                    onChange={(e) => handleSeek(parseFloat(e.target.value))}
+                                    onInput={(e) =>
+                                      handleSeek(parseFloat((e.target as HTMLInputElement).value))
+                                    }
+                                    className="video-scrub absolute inset-0 z-10 h-full w-full cursor-pointer"
+                                    aria-label="Seek"
+                                  />
+                                </div>
                               </div>
 
                               <div className="flex items-center gap-2 bg-black/55 px-3 py-2 backdrop-blur-md">
