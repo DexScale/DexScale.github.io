@@ -22,6 +22,7 @@ const authors = [
   { name: "苏洋", affil: "灵心" },
   { name: "孙煜童", affil: "灵心" },
   { name: "周浩宇", affil: "灵心" },
+  { name: "赵美涵", affil: "灵心" },
 ] as const;
 
 type AuthorAffil = (typeof authors)[number]["affil"];
