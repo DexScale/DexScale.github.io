@@ -24,8 +24,8 @@ export const i18nDict: Record<string, { en: string; zh: string }> = {
     zh: "Linker Hand — 灵巧手与场景",
   },
   "hero.title": {
-    en: "The first Large Scale, Enterprise Quality, Realistic Task Dataset and Ecosystem for Embodied AI",
-    zh: "首个面向具身智能的大规模、企业级、真实任务数据集与生态系统",
+    en: "A Diverse and Large-Scale Vision-Tactile Dataset for General Dexterous Manipulation",
+    zh: "首个面向通用机器人策略的大规模学习数据集",
   },
   "hero.watch": { en: "Watch the full video", zh: "观看完整视频" },
   "hero.download": { en: "Download Dataset", zh: "下载数据集" },
@@ -36,9 +36,12 @@ export const i18nDict: Record<string, { en: string; zh: string }> = {
   "hero.partners.sjtu": { en: "Shanghai Jiao Tong University", zh: "上海交通大学" },
   "hero.partners.hku": { en: "The University of Hong Kong", zh: "香港大学" },
   "hero.authors.title": { en: "Author affiliations", zh: "作者单位" },
+  "hero.authors.affil.sjtu": { en: "SJTU", zh: "上海交大" },
+  "hero.authors.affil.hku": { en: "HKU", zh: "香港大学" },
+  "hero.authors.affil.linker": { en: "Linkerbot", zh: "灵心巧手" },
   "hero.authors.placeholder": {
     en: "To be announced — content coming soon.",
-    zh: "敬请期待，后续补充。",
+    zh: "穆尧(sjtu) 秦言（hku） 陈天行(hku) 邵彦铭 （sjtu） 苏洋（灵心） 孙煜童（灵心）周浩宇（灵心）",
   },
   "intro.p1": {
     en: "Most existing robot learning benchmarks struggle to address real-world challenges caused by low-quality data and limited sensing capabilities, typically limited to short-horizon tasks within controlled environments.",

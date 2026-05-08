@@ -6,6 +6,25 @@
 // You can pass additional config via defineConfig({ vite: { ... } }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
+/**
+ * GitHub project pages are served under `/<repo>/`, not site root. Vite + TanStack must use the same base
+ * or JS/CSS will 404. User/org site from a `username.github.io` repo uses `/`.
+ *
+ * Override anytime: `VITE_STATIC_BASE=/my-repo/` npm run build
+ */
+const staticSiteBase = (): string => {
+  const explicit = process.env.VITE_STATIC_BASE?.trim();
+  if (explicit) {
+    return explicit.endsWith("/") ? explicit : `${explicit}/`;
+  }
+  const repo = process.env.GITHUB_REPOSITORY;
+  if (!repo) return "/";
+  const name = repo.split("/")[1];
+  if (!name) return "/";
+  if (/^[a-z0-9_-]+\.github\.io$/i.test(name)) return "/";
+  return `/${name}/`;
+};
+
 // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
 // `cloudflare: false`: the Cloudflare Vite plugin emits `dist/server/index.js`, but prerender's
 // preview server expects `server.js` — disabling it restores the Node SSR bundle used at build
@@ -18,5 +37,8 @@ export default defineConfig({
       enabled: true,
       autoStaticPathsDiscovery: true,
     },
+  },
+  vite: {
+    base: staticSiteBase(),
   },
 });

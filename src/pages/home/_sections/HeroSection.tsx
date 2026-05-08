@@ -2,12 +2,43 @@ import { ArrowRight, Play } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 // import heroPoster from "../assets/heroBg.jpg";
 import heroVideo from "../assets/linkerbot.mp4";
+import logoSJTU from "../assets/SJTU.png";
+import logoHKU from "../assets/UHK.wine.svg";
+import logoLinkerbot from "../assets/linerbotLogo.png";
 
-const PARTNER_LABEL_KEYS = [
-  "hero.partners.lxxqs",
-  "hero.partners.sjtu",
-  "hero.partners.hku",
+const partners = [
+  { name: "灵心巧手", logo: logoLinkerbot },
+  { name: "上海交通大学", logo: logoSJTU },
+  { name: "香港大学", logo: logoHKU },
 ] as const;
+
+const authors = [
+  { name: "穆尧", affil: "sjtu" },
+  { name: "秦言", affil: "hku" },
+  { name: "陈天行", affil: "hku" },
+  { name: "邵彦铭", affil: "sjtu" },
+  { name: "周永", affil: "灵心" },
+  { name: "曹岗", affil: "灵心" },
+  { name: "苏洋", affil: "灵心" },
+  { name: "孙煜童", affil: "灵心" },
+  { name: "周浩宇", affil: "灵心" },
+] as const;
+
+type AuthorAffil = (typeof authors)[number]["affil"];
+
+const AUTHOR_GROUP_ORDER: readonly AuthorAffil[] = ["sjtu", "hku", "灵心"];
+
+const AFFIL_LABEL_KEY: Record<AuthorAffil, string> = {
+  sjtu: "hero.authors.affil.sjtu",
+  hku: "hero.authors.affil.hku",
+  灵心: "hero.authors.affil.linker",
+};
+
+const groupedAuthors = AUTHOR_GROUP_ORDER.map((affil) => ({
+  affil,
+  labelKey: AFFIL_LABEL_KEY[affil],
+  names: authors.filter((a) => a.affil === affil).map((a) => a.name),
+})).filter((g) => g.names.length > 0);
 
 interface HeroSectionProps {
   t: (key: string) => string;
@@ -161,10 +192,10 @@ export const HeroSection = ({ t }: HeroSectionProps) => {
               <span className="hero-credits-label-text">{t("hero.partners.title")}</span>
             </h2>
             <div className="hero-credits-partners">
-              {PARTNER_LABEL_KEYS.map((key) => (
-                <span key={key} className="hero-credits-partner-name">
-                  {t(key)}
-                </span>
+              {partners.map((p) => (
+                <div key={p.name} className="hero-credits-partner-logo" title={p.name}>
+                  <img src={p.logo} alt={p.name} loading="lazy" />
+                </div>
               ))}
             </div>
           </div>
@@ -172,10 +203,17 @@ export const HeroSection = ({ t }: HeroSectionProps) => {
           <div className="hero-credits-divider" aria-hidden />
 
           <div className="hero-credits-block-b">
-            <h2 className="hero-credits-label hero-credits-label--violet">
+            <h2 className="hero-credits-label">
               <span className="hero-credits-label-text">{t("hero.authors.title")}</span>
             </h2>
-            <p className="hero-credits-placeholder">{t("hero.authors.placeholder")}</p>
+            <div className="hero-credits-authors-grid" role="list">
+              {groupedAuthors.map((group) => (
+                <div key={group.affil} className="hero-credits-author-group" role="listitem">
+                  <span className="hero-credits-author-group-label">{t(group.labelKey)}</span>
+                  <p className="hero-credits-author-group-names">{group.names.join(" · ")}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </aside>
       </div>

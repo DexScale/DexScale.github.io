@@ -1,4 +1,6 @@
 {
+  // Optional Cloudflare **Worker** deploy: turn Cloudflare back on in `vite.config.ts`, run `vite build`,
+  // then `wrangler deploy`. For team **static** hosting, run `npm run build` and publish `dist/client/` only.
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "tanstack-start-app",
   "compatibility_date": "2025-09-24",
