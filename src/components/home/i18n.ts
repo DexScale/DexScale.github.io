@@ -1,0 +1,255 @@
+import { useCallback, useEffect, useState } from "react";
+
+export type Lang = "en" | "zh";
+
+const LANG_KEY = "agibot-lang";
+
+export const i18nDict: Record<string, { en: string; zh: string }> = {
+  "nav.dataset": { en: "Dataset", zh: "数据集" },
+  "nav.multi_tasks": { en: "Tasks", zh: "多样化任务" },
+  "nav.whole_machine": { en: "Platform", zh: "整机" },
+  "nav.dexterous_hand": { en: "Dexterous Hand", zh: "灵巧手" },
+  "nav.teleoperation": { en: "Teleoperation", zh: "遥操设备" },
+  "nav.stats": { en: "Dataset", zh: "数据集" },
+  "nav.footer": { en: "Contact", zh: "联系我们" },
+  "nav.model": { en: "Model", zh: "模型" },
+  "nav.sim": { en: "Simulation", zh: "仿真" },
+  "nav.challenge": { en: "Challenge", zh: "挑战赛" },
+  "nav.collab": { en: "Collaboration", zh: "业务合作" },
+  "nav.mall": { en: "Mall", zh: "商城" },
+  "hero.tag": { en: "Linker Hand", zh: "灵巧手" },
+  "hero.brand": { en: "DexScale", zh: "DexScale" },
+  "hero.image_alt": {
+    en: "Linker Hand — dexterous hand and environment",
+    zh: "Linker Hand — 灵巧手与场景",
+  },
+  "hero.title": {
+    en: "The first Large Scale, Enterprise Quality, Realistic Task Dataset and Ecosystem for Embodied AI",
+    zh: "首个面向具身智能的大规模、企业级、真实任务数据集与生态系统",
+  },
+  "hero.watch": { en: "Watch the full video", zh: "观看完整视频" },
+  "hero.download": { en: "Download Dataset", zh: "下载数据集" },
+  "hero.github": { en: "Github", zh: "Github" },
+  "hero.paper": { en: "Paper", zh: "论文" },
+  "hero.partners.title": { en: "Partners", zh: "合作单位" },
+  "hero.partners.lxxqs": { en: "Linkerbot", zh: "灵心巧手" },
+  "hero.partners.sjtu": { en: "Shanghai Jiao Tong University", zh: "上海交通大学" },
+  "hero.partners.hku": { en: "The University of Hong Kong", zh: "香港大学" },
+  "hero.authors.title": { en: "Author affiliations", zh: "作者单位" },
+  "hero.authors.placeholder": {
+    en: "To be announced — content coming soon.",
+    zh: "敬请期待，后续补充。",
+  },
+  "intro.p1": {
+    en: "Most existing robot learning benchmarks struggle to address real-world challenges caused by low-quality data and limited sensing capabilities, typically limited to short-horizon tasks within controlled environments.",
+    zh: "现有机器人学习基准多受限于数据质量与感知能力，仅能处理受控环境下的短程任务，难以应对真实世界的复杂挑战。",
+  },
+  "intro.p2": {
+    en: 'Introducing Linker Hand — the first large-scale robotic learning dataset designed to advance multi-purpose robotic policies, accompanied by foundation models, benchmarks and an ecosystem, paving the path towards the "ImageNet Moment" for Embodied AI.',
+    zh: '我们推出 Linker Hand —— 首个面向通用机器人策略的大规模学习数据集，配套基础模型、基准与生态，迈向具身智能的"ImageNet 时刻"。',
+  },
+  "intro.p3": {
+    en: "1M+ trajectories from 100 robots across 100+ real-world scenarios in five target domains. Cutting-edge multimodal hardware including visual tactile sensors, dexterous hands, and mobile dual-arm robots.",
+    zh: "100 台机器人采集的 100 万+ 轨迹，覆盖五大领域 100+ 真实场景。配备视触觉传感器、灵巧手与移动双臂机器人等前沿多模态硬件。",
+  },
+  "highlights.title": { en: "Linker Hand Highlights", zh: "项目亮点" },
+  "h1.title": { en: "Cutting-Edge Sensor and Hardware Design", zh: "前沿传感与硬件设计" },
+  "h1.desc": {
+    en: "Visual tactile sensors, 6-DoF dexterous hands and whole-body controlled mobile dual-arm robots.",
+    zh: "视触觉传感器、6 自由度灵巧手与全身控制的移动双臂机器人。",
+  },
+  "h2.title": { en: "Wide-Spectrum Scenario Coverage", zh: "广谱场景覆盖" },
+  "h2.desc": {
+    en: "100+ real-world scenarios spanning five major industries.",
+    zh: "覆盖五大行业的 100+ 真实复刻场景。",
+  },
+  "h3.title": { en: "Quality Assurance with Human-in-the-Loop", zh: "人在回路质量保障" },
+  "h3.desc": {
+    en: "Strict review pipeline ensures enterprise-level data quality.",
+    zh: "严格的人工审核流程，保障企业级数据质量。",
+  },
+  "tasks.title": { en: "Versatile Scenarios", zh: "多样化场景" },
+  "tasks.sub": {
+    en: "Challenging tasks across 100+ replicated real-life scenarios in five major industries.",
+    zh: "覆盖五大行业 100+ 真实场景的挑战性任务。",
+  },
+  "tasks.cta": { en: "Task Overview", zh: "任务总览" },
+  "multi.title": { en: "Versatile Tasks", zh: "多样化任务" },
+  "multi.sub": {
+    en: "Five challenging manipulation tasks showcasing dexterous capabilities across industrial, domestic, and collaborative scenarios.",
+    zh: "五项具有挑战性的操作任务，展示工业、家用及协作场景下的灵巧操作能力",
+  },
+  "multi.cta": { en: "View more task overview", zh: "查看更多任务概览" },
+  "multi.task_word": { en: "Task", zh: "任务" },
+  "multi.prev": { en: "Previous task", zh: "上一个任务" },
+  "multi.next": { en: "Next task", zh: "下一个任务" },
+  "multi.task.thread": { en: "Thread sewing", zh: "穿针引线" },
+  "multi.task.tactile": { en: "Visuotactile fine manipulation", zh: "视触觉精细操作" },
+  "multi.task.industrial": { en: "Industrial fine manipulation", zh: "工业化精细操作" },
+  "multi.task.multi": { en: "Multi-robot collaboration", zh: "多机器人协作" },
+  "multi.task.tool": { en: "Dexterous hand tool use", zh: "灵巧手工具使用" },
+  "stats.title": { en: "Dataset Statistics", zh: "数据集统计" },
+  "stats.sub": {
+    en: "Diversity and usability assurance through strategic collection.",
+    zh: "通过策略化采集，确保多样性与可用性。",
+  },
+  "cta.title": { en: "Need customized robotic learning data?", zh: "需要定制机器人学习数据？" },
+  "cta.sub": {
+    en: "Request your OWN data with the same ENTERPRISE level quality.",
+    zh: "申请同等企业级品质的专属数据采集。",
+  },
+  "cta.btn": { en: "Data Collection Service", zh: "数据采集服务" },
+  "hw.title": { en: "Hardware Ecosystem", zh: "硬件生态" },
+  "hw.robot": { en: "Buy Robot", zh: "购买机器人" },
+  "hw.kit": { en: "Buy Data Collection Kit", zh: "购买采集套件" },
+  "faq.title": { en: "FAQ", zh: "常见问题" },
+  "footer.contact": {
+    en: "For any inquiries, please contact: business@linkerbot.cn",
+    zh: "如有任何咨询，请联系：business@linkerbot.cn",
+  },
+  "footer.join": { en: "Join the Official Wechat Group", zh: "加入官方微信群" },
+  "hand.title": { en: "Dexterous Hand Series", zh: "灵巧手产品系列" },
+  "hand.desc": {
+    en: "Two hands from lightweight deployment to high-DoF precision: linkage drive with CAN/RS485, integrating seamlessly across our humanoid platforms.",
+    zh: "两款灵巧手覆盖从轻量化部署到高精度操作的全场景需求，连杆传动设计配合 CAN/RS485 接口，可与人形机器人全系平台无缝集成。",
+  },
+  "hand.basic_heading": { en: "Basic specifications", zh: "基础参数" },
+  "hand.dof_badge": { en: "DOF", zh: "DOF" },
+  "hand.label.dof": { en: "Degrees of freedom", zh: "自由度" },
+  "hand.label.joints": { en: "Number of joints", zh: "关节数" },
+  "hand.label.transmission": { en: "Drive type", zh: "传动方式" },
+  "hand.label.control": { en: "Control interface", zh: "控制接口" },
+  "hand.label.comm_freq": { en: "Communication rate", zh: "通信频率" },
+  "hand.label.weight": { en: "Weight", zh: "重量" },
+  "hand.label.max_load": { en: "Max. payload", zh: "最大负载" },
+  "hand.label.voltage": { en: "Operating voltage", zh: "工作电压" },
+  "hand.label.static_current": { en: "Quiescent current", zh: "静态电流" },
+  "hand.label.avg_current": { en: "Avg. no-load motion current", zh: "空载运动平均电流" },
+  "hand.label.max_current": { en: "Max. current", zh: "最大电流" },
+  "hand.label.repeatability": { en: "Repeat positioning accuracy", zh: "重复定位精度" },
+  "hand.label.open_time": { en: "Open/close time", zh: "开合时间" },
+  "hand.force.thumb": { en: "Max. thumb tip force", zh: "拇指最大指尖力" },
+  "hand.force.four": { en: "Max. four-finger tip force", zh: "四指最大指尖力" },
+  "hand.force.five": { en: "Max. five-finger grasp force", zh: "五指最大抓握力" },
+  "hand.l20.subtitle": { en: "High-DoF dexterous hand", zh: "高自由度灵巧手" },
+  "hand.l6.subtitle": { en: "Lightweight dexterous hand", zh: "轻量化灵巧手" },
+  "hand.l20.model": { en: "Linker Hand L20", zh: "Linker Hand L20" },
+  "hand.l6.model": { en: "Linker Hand L6", zh: "Linker Hand L6" },
+  "hand.l20.alt": {
+    en: "Linker Hand L20 dexterous robotic hand",
+    zh: "Linker Hand L20 灵巧手机械手",
+  },
+  "hand.l6.alt": {
+    en: "Linker Hand L6 dexterous robotic hand",
+    zh: "Linker Hand L6 灵巧手机械手",
+  },
+  "hand.val.linkage": { en: "Linkage transmission", zh: "连杆传动" },
+  "hand.val.can_rs485": { en: "CAN/RS485", zh: "CAN/RS485" },
+  "hand.val.l20.dof": { en: "16", zh: "16" },
+  "hand.val.l20.joints": {
+    en: "21 (16 active + 5 passive)",
+    zh: "21（16 主动 + 5 被动）",
+  },
+  "hand.val.l20.comm": { en: "500 Hz", zh: "500 Hz" },
+  "hand.val.l20.weight": { en: "≈1200 g", zh: "≈1200 g" },
+  "hand.val.l20.load": { en: "20 kg", zh: "20 kg" },
+  "hand.val.l20.voltage": { en: "DC 24V—48V", zh: "DC 24V—48V" },
+  "hand.val.l20.static_i": { en: "0.3 A", zh: "0.3 A" },
+  "hand.val.l20.avg_i": { en: "0.4 A", zh: "0.4 A" },
+  "hand.val.l20.max_i": { en: "1.8 A", zh: "1.8 A" },
+  "hand.val.l20.repeat": { en: "±0.2 mm", zh: "±0.2 mm" },
+  "hand.val.l20.open": { en: "0.9 s", zh: "0.9 s" },
+  "hand.val.l6.dof": { en: "6", zh: "6" },
+  "hand.val.l6.joints": {
+    en: "11 (6 active + 5 passive)",
+    zh: "11（6 主动 + 5 被动）",
+  },
+  "hand.val.l6.weight": { en: "607 g", zh: "607 g" },
+  "hand.val.l6.load": { en: "28 kg", zh: "28 kg" },
+  "hand.val.l6.voltage": { en: "DC 24V ±10%", zh: "DC 24V ±10%" },
+  "hand.val.l6.static_i": { en: "0.2 A", zh: "0.2 A" },
+  "hand.val.l6.avg_i": { en: "0.75 A", zh: "0.75 A" },
+  "hand.val.l6.max_i": { en: "1.4 A", zh: "1.4 A" },
+  "hand.val.l6.repeat": { en: "<±0.2 mm", zh: "<±0.2 mm" },
+  "teleop.title": { en: "Robot teleoperation system", zh: "机器人遥操设备" },
+  "teleop.desc": {
+    en: "Deep integration with data collection: real-time capture of robot and teleop device telemetry to support reliable data for humanoid foundation model training.",
+    zh: "设备可与数据采集系统深度融合，实时采集机器人及遥操设备的运行数据，为人形机器人大模型训练提供可靠数据支撑。",
+  },
+  "teleop.image_alt": {
+    en: "Robot teleoperation hardware",
+    zh: "机器人遥操设备",
+  },
+  "teleop.lta.name": { en: "Teleoperation arm LTA", zh: "遥操臂 LTA" },
+  "teleop.lffg.name": { en: "Force-feedback glove LFFG", zh: "力反馈手套 LFFG" },
+  "teleop.lta.i1": {
+    en: "DoF: 7 per arm, 14 total (dual arms)",
+    zh: "自由度配置：单臂 7 个自由度，双臂共计 14 个自由度",
+  },
+  "teleop.lta.i2": { en: "Single-arm reach: 658 mm", zh: "单臂臂展：658mm" },
+  "teleop.lta.i3": {
+    en: "Mounting: suspended and chest-worn",
+    zh: "穿戴方式：支持悬挂式、胸前式两种穿戴形态",
+  },
+  "teleop.lta.i4": {
+    en: "Rated supply: 24 V, 0.075 A",
+    zh: "额定供电：24V，0.075A",
+  },
+  "teleop.lta.i5": { en: "Device weight: 1.4 kg", zh: "设备重量：1.4Kg" },
+  "teleop.lta.i6": {
+    en: "Bus: CAN at 1 Mbps",
+    zh: "通信方式：CAN 总线通信，传输速率 1Mbps",
+  },
+  "teleop.lta.i7": { en: "Sampling rate: 200 Hz", zh: "采样频率：200Hz" },
+  "teleop.lta.i8": {
+    en: "Joint angle resolution: 0.087°",
+    zh: "关节角度精度：0.087°",
+  },
+  "teleop.lffg.i1": {
+    en: "Tracking: 21 DoF per hand, high-precision joint angles",
+    zh: "运动捕获：单手 21 自由度，支持全关节角度高精度采集",
+  },
+  "teleop.lffg.i2": {
+    en: "Data rate: 100 Hz wired / 30 Hz wireless",
+    zh: "数据传输频率：有线模式 100Hz，无线模式 30Hz",
+  },
+  "teleop.lffg.i3": {
+    en: "Power: 5 V USB Type-C",
+    zh: "供电方式：5V Type-C 供电",
+  },
+  "teleop.lffg.i4": { en: "Weight: 390 g", zh: "产品重量：390g" },
+  "teleop.lffg.i5": {
+    en: "Joint angle accuracy: 0.08°",
+    zh: "关节角度捕获精度：0.08°",
+  },
+  "teleop.lffg.i6": {
+    en: "Peak torque: 3.5 kg·cm",
+    zh: "最大扭矩输出：3.5kg・cm",
+  },
+  "teleop.lffg.i7": {
+    en: "Compatible with the full Linker Hand lineup",
+    zh: "适配性：兼容本公司全系列灵巧手产品",
+  },
+};
+
+export const useLang = () => {
+  const [lang, setLang] = useState<Lang>("en");
+
+  useEffect(() => {
+    const storedLang = window.localStorage.getItem(LANG_KEY);
+    if (storedLang === "zh") setLang("zh");
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.lang = lang;
+    window.localStorage.setItem(LANG_KEY, lang);
+  }, [lang]);
+
+  const t = useCallback((key: string) => i18nDict[key]?.[lang] ?? key, [lang]);
+
+  const toggleLang = useCallback(() => {
+    setLang((currentLang) => (currentLang === "en" ? "zh" : "en"));
+  }, []);
+
+  return { lang, t, toggleLang };
+};
