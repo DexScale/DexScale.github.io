@@ -170,11 +170,11 @@
 
 @media (min-width: 640px) {
   .hero-credits-partner-logo {
-    height: 70px;
+    height: 88px;
   }
 
   .hero-credits-partner-logo img {
-    max-width: 160px;
+    max-width: 190px;
   }
 }
 

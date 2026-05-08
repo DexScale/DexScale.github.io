@@ -35,7 +35,7 @@ export const i18nDict: Record<string, { en: string; zh: string }> = {
   "hero.partners.lxxqs": { en: "Linkerbot", zh: "灵心巧手" },
   "hero.partners.sjtu": { en: "Shanghai Jiao Tong University", zh: "上海交通大学" },
   "hero.partners.hku": { en: "The University of Hong Kong", zh: "香港大学" },
-  "hero.authors.title": { en: "Author ", zh: "作者" },
+  "hero.authors.title": { en: "Authors ", zh: "作者" },
   "hero.authors.affil.sjtu": { en: "SJTU", zh: "上海交大" },
   "hero.authors.affil.hku": { en: "HKU", zh: "香港大学" },
   "hero.authors.affil.linker": { en: "Linkerbot", zh: "灵心巧手" },

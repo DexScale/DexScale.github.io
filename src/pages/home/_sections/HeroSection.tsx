@@ -143,11 +143,11 @@ export const HeroSection = ({ t }: HeroSectionProps) => {
       </div>
 
       <div className="relative z-10 flex w-full max-w-4xl flex-col items-center text-center text-white">
-        <h1 className="m-0 max-w-4xl text-[clamp(3rem,6.5vw,5rem)] font-bold uppercase leading-[1.08] tracking-[0.06em] text-white">
+        <h1 className="m-0 max-w-5xl text-[clamp(4rem,6.5vw,8.5rem)] font-bold uppercase leading-[1.38] tracking-[0.06em] text-white">
           {t("hero.brand")}
         </h1>
 
-        <p className="mt-5 max-w-2xl text-xl font-medium leading-relaxed text-white md:text-2xl">
+        <p className="mt-2 max-w-2xl text-xl font-medium leading-relaxed text-white md:text-2xl">
           {t("hero.title")}
         </p>
 
@@ -155,7 +155,7 @@ export const HeroSection = ({ t }: HeroSectionProps) => {
           type="button"
           onClick={() => void handleWatchFullVideo()}
           onKeyDown={handleWatchKeyDown}
-          className="mt-10 inline-flex items-center gap-3 text-xl font-normal text-white transition-opacity hover:opacity-90"
+          className="mt-5 inline-flex items-center gap-3 text-xl font-normal text-white transition-opacity hover:opacity-90"
           aria-label={t("hero.watch")}
         >
           <span>{t("hero.watch")}</span>
@@ -237,7 +237,7 @@ export const HeroSection = ({ t }: HeroSectionProps) => {
                   Haoyu Zhou<sup>1</sup>,
                 </span>
                 <span className="author-equal">
-                  Meihan Zhao<sup>1</sup>,
+                  Meihan Zhao<sup>1</sup>
                 </span>
               </div>
               <hr className="my-6 border-gray-300 w-full"></hr>
@@ -258,10 +258,7 @@ export const HeroSection = ({ t }: HeroSectionProps) => {
                   <sup>*</sup>Equal contribution,
                 </span>
                 <span>
-                  <sup>⊠</sup>Corresponding author,
-                </span>
-                <span>
-                  <sup>†</sup>Equally leading organizations
+                  <sup>⊠</sup>Corresponding author
                 </span>
               </div>
             </div>
