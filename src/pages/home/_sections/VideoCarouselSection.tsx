@@ -215,9 +215,9 @@ export const VideoCarouselSection = ({ t }: VideoCarouselSectionProps) => {
           <h2 className="mb-4 text-4xl leading-tight font-bold text-(--hm-text) md:text-5xl">
             {t("scenarios.title")}
           </h2>
-          <p className="mx-auto max-w-2xl text-base leading-[1.8] text-(--hm-muted)">
+          {/* <p className="mx-auto max-w-2xl text-base leading-[1.8] text-(--hm-muted)">
             {t("scenarios.subtitle")}
-          </p>
+          </p> */}
         </div>
 
         <div className="relative px-0 md:px-4" style={{ perspective: "1400px" }}>

@@ -2,27 +2,35 @@ import type { CSSProperties } from "react";
 import { useCounter } from "@/hooks/use-counter";
 import { Reveal } from "./Reveal";
 import videoSrc from "../assets/linkerbot.mp4";
-import videoSrc2 from "../assets/video1.webm";
+import videoSrc2 from "../assets/l6_torch.webm";
 
 interface StatsSectionProps {
   t: (key: string) => string;
 }
 
+const topStats = [
+  { label: "COLOR", key: "color" },
+  { label: "DEPTH", key: "depth" },
+  { label: "TACTILE", key: "tactile" },
+  { label: "LANGUAGE", key: "language" },
+];
+
 const stats = [
-  { target: 217, suffix: "", label: "TASKS" },
-  { target: 106, suffix: "", label: "SCENARIOS" },
-  { target: 87, suffix: "", label: "SKILLS" },
+  { target: 10, suffix: "W+", label: "TRAJECTORIES" },
+  { target: 300, suffix: "+", label: "TASKS" },
+  { target: 10, suffix: "+", label: "SCENARIOS" },
 ];
 
 const distributions = [
   {
     title: "Scenarios Distribution",
     rows: [
-      { name: "Home", width: "78%", value: "34%" },
-      { name: "Restaurant", width: "58%", value: "22%" },
-      { name: "Supermarket", width: "46%", value: "18%" },
-      { name: "Office", width: "36%", value: "14%" },
-      { name: "Industrial", width: "30%", value: "12%" },
+      { name: "Kitchen & Cooking", width: "92%", value: "23%" },
+      { name: "Music & Toys", width: "76%", value: "22%" },
+      { name: "Office & Study", width: "52%", value: "12%" },
+      { name: "Personal Care", width: "48%", value: "11%" },
+      { name: "Living Room", width: "43%", value: "10%" },
+      { name: "Others", width: "76%", value: "22%" },
     ],
   },
   {
@@ -30,28 +38,29 @@ const distributions = [
     rows: [
       { name: "Pick & Place", width: "88%", value: "28%" },
       { name: "Insert", width: "64%", value: "20%" },
-      { name: "Pour", width: "50%", value: "16%" },
-      { name: "Open / Close", width: "42%", value: "14%" },
-      { name: "Tool Use", width: "36%", value: "12%" },
+      { name: "Open / Close & Press", width: "42%", value: "18%" },
+      { name: "Tool Use", width: "36%", value: "7%" },
+      { name: "Pour & apply", width: "36%", value: "7%" },
+      { name: "Others", width: "76%", value: "20%" },
     ],
   },
   {
     title: "Object Categories",
     rows: [
-      { name: "Kitchenware", width: "72%", value: "26%" },
-      { name: "Packages", width: "60%", value: "22%" },
-      { name: "Tools", width: "52%", value: "18%" },
-      { name: "Office Items", width: "42%", value: "14%" },
-      { name: "Fabric", width: "34%", value: "12%" },
+      { name: "Kitchenware", width: "72%", value: "27%" },
+      { name: "Toys, Games & Music", width: "60%", value: "18%" },
+      { name: "Office Items", width: "52%", value: "12%" },
+      { name: "Electronics & Travel", width: "52%", value: "12%" },
+      { name: "Clothing & Fabric", width: "48%", value: "12%" },
+      { name: "Others", width: "76%", value: "19%" },
     ],
   },
   {
     title: "Episode Duration",
     rows: [
-      { name: "< 30s", width: "46%", value: "24%" },
-      { name: "30s–1min", width: "78%", value: "36%" },
-      { name: "1–3min", width: "58%", value: "26%" },
-      { name: "> 3min", width: "30%", value: "14%" },
+      { name: "< 30s", width: "76%", value: "38%" },
+      { name: "30s–1min", width: "58%", value: "36%" },
+      { name: "1–3min", width: "48%", value: "26%" },
     ],
   },
 ];
@@ -65,6 +74,14 @@ const StatCard = ({ target, suffix, label }: (typeof stats)[number]) => {
         {displayValue}
       </div>
       <div className="mt-1.5 text-[13px] tracking-[0.08em] text-[var(--hm-muted)]">{label}</div>
+    </div>
+  );
+};
+
+const TextCard = ({ label }: { label: string }) => {
+  return (
+    <div className="rounded-[18px] border border-[var(--hm-line)] bg-white/[0.03] p-4 text-center">
+      <div className="home-gradient-text text-[38px] font-extrabold">{label}</div>
     </div>
   );
 };
@@ -124,6 +141,12 @@ export const StatsSection = ({ t }: StatsSectionProps) => {
             </Reveal>
           ))}
         </div>
+
+        <Reveal className="mt-14 grid grid-cols-4 gap-6">
+          {topStats.map((stat) => (
+            <TextCard key={stat.key} label={stat.label} />
+          ))}
+        </Reveal>
 
         <Reveal className="mt-14">
           <div className="grid grid-cols-8 gap-6">

@@ -46,15 +46,15 @@ export const i18nDict: Record<string, { en: string; zh: string }> = {
   },
   "intro.p1": {
     en: "Dexterous manipulation is essential for building general-purpose embodied agents, yet learning such skills remains challenging due to high-dimensional hand control, complex contact dynamics, and the lack of large-scale, high-quality datasets. Existing robot manipulation datasets are often limited to simple grippers, visual observations, single embodiments, or short-horizon tasks, making them insufficient for studying general dexterous manipulation.",
-    zh: "灵巧操纵是构建通用具身智能体的核心基础。但由于手部控制维度高、接触动力学复杂，且缺乏大规模、高质量数据集，学习这类灵巧操作技能一直极具挑战。现有的机器人操纵数据集大多局限于简易夹爪、单一视觉观测、单一种类智能体形态，或是短时程任务，难以支撑通用灵巧操纵领域的研究。",
+    zh: "灵巧操作是构建通用具身智能体的核心基础。但由于手部控制维度高、接触动力学复杂，且缺乏大规模、高质量数据集，学习这类灵巧操作技能一直极具挑战。现有的机器人操纵数据集大多局限于简易夹爪、单一视觉观测，难以支撑通用灵巧操纵领域的研究。",
   },
   "intro.p2": {
     en: "In this work, we introduce DexScale, a diverse and large-scale vision-tactile dataset designed for general dexterous robotic manipulation. DexScale supports dexterous hands with different degrees of freedom and provides synchronized multimodal observations, including robot actions, RGB-D visual perception, and in-hand tactile sensing. Built upon a high-fidelity isomorphic data collection system, DexScale captures fine-grained, smooth, and contact-rich manipulation trajectories that are difficult to obtain with conventional teleoperation pipelines.",
-    zh: "我们提出 DexScale—— 一款面向通用机器人灵巧操纵的大规模、多场景视觉 - 触觉数据集。DexScale 支持不同自由度的灵巧手，提供机器人动作、RGB-D 视觉感知、手部触觉传感等多模态同步观测数据。依托高保真同构数据采集系统，DexScale 能够采集到精细化、平滑且富含接触交互的操纵轨迹，这类轨迹难以通过传统遥操作方案获取",
+    zh: "我们提出 DexScale —— 一款面向通用机器人灵巧操纵的大规模、多场景视觉-触觉数据集。DexScale 支持从低到高不同自由度的灵巧手，提供机器人动作、RGB-D 视觉感知、手指触觉等多模态严格同步观测数据。依托高保真同构数据采集系统，DexScale 能够采集到精细化、平滑且富含接触交互的操纵轨迹。",
   },
   "intro.p3": {
     en: "The dataset covers a broad range of tasks and scenarios, including tool use, dexterous object manipulation, diverse grasping, bimanual coordination, long-horizon execution, and interactions in varied environments. By scaling dexterous manipulation data across embodiments, modalities, tasks, and scenes, DexScale provides a foundation for training and evaluating policies that integrate spatial perception, tactile feedback, and precise hand control. Together, DexScale aims to bridge the gap between large-scale robot learning and fine-grained dexterous control, offering a data foundation for developing general-purpose vision-tactile manipulation policies.",
-    zh: "100 台机器人采集的 100 万+ 轨迹，覆盖五大领域 100+ 真实场景。配备视触觉传感器、灵巧手与移动双臂机器人等前沿多模态硬件。",
+    zh: "DexScale 包含 10+ 真实生活场景、300+ 精细化操作任务，拥有 10W+ 条真机采集轨迹，覆盖从单手 Pick & Place 到双手协同撕、拧、插、按、敲、写等完整技能谱系，为通用灵巧操纵研究提供任务全面、模态丰富、灵巧手型号多样的真实双臂数据支撑。",
   },
   "highlights.title": { en: "Linker Hand Highlights", zh: "项目亮点" },
   "h1.title": { en: "Cutting-Edge Sensor and Hardware Design", zh: "前沿传感与硬件设计" },
