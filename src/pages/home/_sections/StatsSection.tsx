@@ -91,6 +91,7 @@ export const StatsSection = ({ t }: StatsSectionProps) => {
             autoPlay
             muted
             loop
+            preload="auto"
           />
         </Reveal>
 
@@ -135,6 +136,7 @@ export const StatsSection = ({ t }: StatsSectionProps) => {
                 autoPlay
                 muted
                 loop
+                preload="auto"
               />
             </div>
             {/* 右侧三个 card：顶底贴边，中间 flex-1 自适应（与左侧视频行等高时生效） */}

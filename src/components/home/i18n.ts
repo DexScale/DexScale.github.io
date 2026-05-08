@@ -19,6 +19,7 @@ export const i18nDict: Record<string, { en: string; zh: string }> = {
   "nav.mall": { en: "Mall", zh: "商城" },
   "hero.tag": { en: "Linker Hand", zh: "灵巧手" },
   "hero.brand": { en: "DexScale", zh: "DexScale" },
+  "hero.wait": { en: "Coming soon", zh: "敬请期待" },
   "hero.image_alt": {
     en: "Linker Hand — dexterous hand and environment",
     zh: "Linker Hand — 灵巧手与场景",

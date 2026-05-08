@@ -173,6 +173,8 @@ export const HeroSection = ({ t }: HeroSectionProps) => {
             className="inline-flex items-center gap-2 rounded-full bg-black px-7 py-3 text-sm font-medium text-white shadow-lg transition-colors hover:bg-zinc-900"
           >
             {t("hero.download")}
+            <br />
+            {t("hero.wait")}
             <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
           </a>
           <a
@@ -180,6 +182,8 @@ export const HeroSection = ({ t }: HeroSectionProps) => {
             className="inline-flex items-center gap-2 rounded-full bg-black px-7 py-3 text-sm font-medium text-white shadow-lg transition-colors hover:bg-zinc-900"
           >
             {t("hero.paper")}
+            <br />
+            {t("hero.wait")}
             <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
           </a>
         </div>
