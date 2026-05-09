@@ -257,14 +257,14 @@ export const HeroSection = ({ t }: HeroSectionProps) => {
                   <sup>3</sup>The University of Hong Kong
                 </span>
               </div>
-              <div className="flex flex-wrap justify-center gap-x-2 gap-y-1 affiliation">
+              {/* <div className="flex flex-wrap justify-center gap-x-2 gap-y-1 affiliation">
                 <span>
                   <sup>*</sup>Equal contribution,
                 </span>
                 <span>
                   <sup>⊠</sup>Corresponding author
                 </span>
-              </div>
+              </div> */}
             </div>
           </div>
         </aside>
