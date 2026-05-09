@@ -1,7 +1,7 @@
 import { ArrowRight, Play } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 // import heroPoster from "../assets/heroBg.jpg";
-import heroVideo from "../assets/linkerbot.mp4";
+import heroVideo from "../assets/linkerbot2.mp4";
 import logoSJTU from "../assets/SJTU.png";
 import logoHKU from "../assets/HKU.png";
 import logoLinkerbot from "../assets/linerbotLogo.png";
@@ -131,7 +131,7 @@ export const HeroSection = ({ t }: HeroSectionProps) => {
         <video
           ref={videoRef}
           src={heroVideo}
-          className="h-full w-full object-cover scale-105"
+          className="h-full w-full object-cover "
           controls={showNativeControls}
           autoPlay
           muted={!showNativeControls}
@@ -139,11 +139,12 @@ export const HeroSection = ({ t }: HeroSectionProps) => {
           playsInline
           preload="auto"
           aria-label={t("hero.image_alt")}
+          disablePictureInPicture
         />
       </div>
 
-      <div className="relative z-10 flex w-full max-w-4xl flex-col items-center text-center text-white">
-        <h1 className="m-0 max-w-5xl text-[clamp(4rem,6.5vw,8.5rem)] font-bold uppercase leading-[1.38] tracking-[0.06em] text-white">
+      <div className="relative z-10 flex w-full max-w-4xl flex-col items-center text-center text-white pt-6">
+        <h1 className="mt-8 max-w-5xl text-[clamp(4rem,6.5vw,8.5rem)] font-bold uppercase leading-[1.38] tracking-[0.06em] text-white">
           {t("hero.brand")}
         </h1>
 
@@ -172,24 +173,20 @@ export const HeroSection = ({ t }: HeroSectionProps) => {
             href="#stats"
             className="inline-flex items-center gap-2 rounded-full bg-black px-7 py-3 text-sm font-medium text-white shadow-lg transition-colors hover:bg-zinc-900"
           >
-            {t("hero.download")}
-            <br />
-            {t("hero.wait")}
+            {t("hero.download")} &nbsp; {t("hero.wait")}
             <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
           </a>
           <a
             href="#stats"
             className="inline-flex items-center gap-2 rounded-full bg-black px-7 py-3 text-sm font-medium text-white shadow-lg transition-colors hover:bg-zinc-900"
           >
-            {t("hero.paper")}
-            <br />
-            {t("hero.wait")}
+            {t("hero.paper")} &nbsp; {t("hero.wait")}
             <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
           </a>
         </div>
 
         <aside
-          className="hero-credits mt-20 w-full"
+          className="hero-credits mt-18 w-full"
           aria-label={`${t("hero.partners.title")} · ${t("hero.authors.title")}`}
         >
           <div className="hero-credits-block-a">

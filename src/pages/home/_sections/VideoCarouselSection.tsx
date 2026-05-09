@@ -253,6 +253,7 @@ export const VideoCarouselSection = ({ t }: VideoCarouselSectionProps) => {
                             loop
                             playsInline
                             preload="metadata"
+                            disablePictureInPicture
                           />
 
                           <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/85 via-black/15 to-transparent" />
@@ -343,29 +344,6 @@ export const VideoCarouselSection = ({ t }: VideoCarouselSectionProps) => {
                                     <Maximize className="h-4 w-4" />
                                   )}
                                 </button>
-                                <DropdownMenu>
-                                  <DropdownMenuTrigger asChild>
-                                    <button
-                                      type="button"
-                                      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-white hover:bg-white/10"
-                                      aria-label={t("scenarios.more_options")}
-                                    >
-                                      <MoreVertical className="h-4 w-4" />
-                                    </button>
-                                  </DropdownMenuTrigger>
-                                  <DropdownMenuContent align="end" className="min-w-40">
-                                    <DropdownMenuItem
-                                      onSelect={() => void videoRefs.current[selectedIndex]?.play()}
-                                    >
-                                      {t("scenarios.play")}
-                                    </DropdownMenuItem>
-                                    <DropdownMenuItem
-                                      onSelect={() => videoRefs.current[selectedIndex]?.pause()}
-                                    >
-                                      {t("scenarios.pause")}
-                                    </DropdownMenuItem>
-                                  </DropdownMenuContent>
-                                </DropdownMenu>
                               </div>
                             </div>
                           )}
