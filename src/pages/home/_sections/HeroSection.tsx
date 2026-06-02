@@ -1,7 +1,7 @@
 import { ArrowRight, Play } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 // import heroPoster from "../assets/heroBg.jpg";
-import heroVideo from "../assets/linkerbot2.mp4";
+import heroVideo from "../assets/hero-video1.mp4";
 import logoSJTU from "../assets/SJTU.png";
 import logoHKU from "../assets/HKU.png";
 import logoLinkerbot from "../assets/linerbotLogo.png";
