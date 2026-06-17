@@ -1,11 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { HomePage } from "@/pages/home";
+import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
   head: () => ({
     meta: [
-      { title: "Linker Hand — 大规模具身智能数据集" },
+      { title: "Linker Hand — 面向通用机器人策略的大规模学习数据集" },
       {
         name: "description",
         content:

@@ -255,6 +255,22 @@ export const i18nDict: Record<string, { en: string; zh: string }> = {
   "scenarios.fullscreen": { en: "Full screen", zh: "全屏" },
   "scenarios.exit_fullscreen": { en: "Exit full screen", zh: "退出全屏" },
   "scenarios.more_options": { en: "More options", zh: "更多选项" },
+  "nav.acknowledgement": { en: "Citation", zh: "致谢要求" },
+  "ack.label": { en: "Usage Terms", zh: "使用规范" },
+  "ack.title": { en: "Acknowledgement Requirement", zh: "致谢要求" },
+  "ack.intro": {
+    en: "If users conduct any analysis, data mining, model training, evaluation, or secondary development based on data from the DEXSCALE platform and produce papers, industry reports, open-source projects, model weights, or other public outputs, they must indicate the data source:",
+    zh: "如果使用者基于 DEXSCALE 平台数据进行任何分析、挖掘、模型训练、评测或二次开发，并产出论文、行业报告、开源项目、模型权重或其他公开成果，需注明数据出处：",
+  },
+  "ack.connector": {
+    en: "and include the following acknowledgement:",
+    zh: "并在致谢处署名：",
+  },
+  "ack.citation": {
+    en: "Data source: DEXSCALE, a diverse and large-scale dataset for general vision-tactile dexterous manipulation.",
+    zh: "数据来自 DEXSCALE：面向通用机器人策略的大规模学习数据集。",
+  },
+  "ack.url": { en: "https://dexscale.github.io/", zh: "https://dexscale.github.io/" },
 };
 
 export const useLang = () => {

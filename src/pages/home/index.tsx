@@ -11,6 +11,7 @@ import { WholeMachineSection } from "./_sections/WholeMachineSection";
 
 import "./home.css";
 import { VideoCarouselSection } from "./_sections/VideoCarouselSection";
+import { AcknowledgementSection } from "./_sections/AcknowledgementSection";
 
 export const HomePage = () => {
   const { lang, t, toggleLang } = useLang();
@@ -27,6 +28,7 @@ export const HomePage = () => {
         {/* <WholeMachineSection t={t} /> */}
         <DexterousHandSection t={t} />
         <TeleoperationSection t={t} />
+        <AcknowledgementSection t={t} />
       </main>
       {/* <FooterSection t={t} /> */}
     </div>
